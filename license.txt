@@ -10,3 +10,20 @@ cmd:netid
 //jlj ok,cyw解析有问题
 
 cmd:sleepdurarton
+ {"body":{"id_fun":["sleepdurarton"]},"eui":"fffe6cecebd7e0f9","id":27,"random":27644}
+ //cyw 未修改sleepdurarton --》sleepduration
+ 
+ cmd:levelvalue
+ //ok
+ 
+ cmd:payloadmax
+  //ok
+  
+cmd:maxcapacity
+  //ok
+  
+cmd:logperiod
+  //ok
+  
+  cmd:datarate
+  // ok
