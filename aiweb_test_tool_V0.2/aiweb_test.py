@@ -14,6 +14,7 @@ from openpyxl.styles import numbers
 from openpyxl.styles import PatternFill
 from openpyxl import load_workbook
 from openpyxl.chart import BarChart, Series, Reference
+
 import logging
 result_list = result_storage()
 filename = 'logXX.log'

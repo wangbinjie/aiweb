@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a72cc780-7e48-4b2e-a771-5b3762697c55" name="Default Changelist" comment="" />
+    <list default="true" id="a72cc780-7e48-4b2e-a771-5b3762697c55" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/节点列表.txt" beforeDir="false" afterPath="$PROJECT_DIR$/节点列表.txt" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,21 +20,20 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/aiweb_test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
+            <state relative-caret-position="27">
+              <caret line="482" column="27" selection-start-line="482" selection-start-column="27" selection-end-line="482" selection-end-column="27" />
               <folding>
                 <element signature="e#24#34#0" expanded="true" />
-                <element signature="e#609#804#0" />
-                <element signature="e#829#1812#0" />
-                <element signature="e#1837#2762#0" />
-                <element signature="e#2825#3091#0" />
-                <element signature="e#3118#3337#0" />
-                <element signature="e#3408#3780#0" />
-                <element signature="e#3923#6421#0" />
-                <element signature="e#6478#7037#0" />
-                <element signature="e#7121#8598#0" />
-                <element signature="e#8700#12018#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://D:/Python36/Lib/tkinter/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45846">
+              <caret line="1701" selection-start-line="1701" selection-end-line="1701" />
             </state>
           </provider>
         </entry>
@@ -38,17 +41,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://D:/Python36/Lib/site-packages/openpyxl/styles/fills.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-36">
+            <state relative-caret-position="1836">
               <caret line="86" column="18" selection-start-line="86" selection-start-column="18" selection-end-line="86" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/result_storage.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="4" selection-start-column="4" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -69,11 +63,15 @@
       <find>creat_bar_chart</find>
       <find>re</find>
       <find>group</find>
+      <find>re.</find>
     </findStrings>
     <replaceStrings>
       <replace>(1.0)</replace>
       <replace>mod_char</replace>
     </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/aiweb_test.py" root0="SKIP_INSPECTION" />
@@ -96,15 +94,17 @@
         <option value="$PROJECT_DIR$/../Tkinter_Test/tkinter_test.py" />
         <option value="$PROJECT_DIR$/123.py" />
         <option value="$PROJECT_DIR$/aiweb_test.py" />
+        <option value="E:/Desktop/aiweb_test_tool/test_tool.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-7" />
-    <option name="y" value="3" />
-    <option name="width" value="1934" />
-    <option name="height" value="1044" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="426" />
+    <option name="y" value="114" />
+    <option name="width" value="1440" />
+    <option name="height" value="780" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -114,8 +114,12 @@
         <subPane>
           <expand>
             <path>
-              <item name="aiweb测试工具-190924" type="b2602c69:ProjectViewProjectNode" />
-              <item name="aiweb测试工具-190924" type="462c0819:PsiDirectoryNode" />
+              <item name="aiweb_test_tool" type="b2602c69:ProjectViewProjectNode" />
+              <item name="aiweb_test_tool" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="aiweb_test_tool" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
@@ -125,9 +129,10 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SearchEverywhereHistoryKey" value="at+ping，0001，0800013800000001&#9;null&#9;null" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="MTConfigurable" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -155,27 +160,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/123.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Client" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="pyinputd" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../TCPIP_简单图形化界面" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../TCPIP_简单图形化界面/Client.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -226,6 +210,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="test_tool" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="pyinputd" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="E:/Desktop/aiweb_test_tool" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="E:/Desktop/aiweb_test_tool/test_tool.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="tkinter_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="pyinputd" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -249,18 +254,18 @@
     </configuration>
     <list>
       <item itemvalue="Python.123" />
-      <item itemvalue="Python.Client" />
       <item itemvalue="Python.aiweb_test (1)" />
       <item itemvalue="Python.aiweb_test" />
+      <item itemvalue="Python.test_tool" />
       <item itemvalue="Python.tkinter_test" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.aiweb_test" />
+        <item itemvalue="Python.test_tool" />
         <item itemvalue="Python.123" />
         <item itemvalue="Python.tkinter_test" />
         <item itemvalue="Python.aiweb_test (1)" />
-        <item itemvalue="Python.Client" />
       </list>
     </recent_temporary>
   </component>
@@ -287,23 +292,23 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="3" width="1934" height="1044" extended-state="0" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4983871" weight="0.12697576" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4983871" visible="true" weight="0.1264489" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.5016129" side_tool="true" weight="0.035827186" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49947312" visible="true" weight="0.14160264" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49947312" weight="0.35791758" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.10942578" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32930845" />
-      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32827735" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32924107" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="7" visible="true" weight="0.32924107" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.16517857" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50052685" side_tool="true" weight="0.21776815" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32930845" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32924107" />
+      <window_info anchor="bottom" id="Messages" order="11" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -395,42 +400,9 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../Tkinter_Test/tkinter_test.py" />
-    <entry file="file://$PROJECT_DIR$/../AiWeb/组网测试/测试工具/aiweb测试工具-190924/aiweb_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="275" column="47" lean-forward="true" selection-start-line="273" selection-start-column="20" selection-end-line="275" selection-end-column="47" />
-          <folding>
-            <element signature="e#640#835#0" />
-            <element signature="e#860#1843#0" />
-            <element signature="e#1868#2793#0" />
-            <element signature="e#2856#3122#0" />
-            <element signature="e#3149#3368#0" />
-            <element signature="e#3439#3811#0" />
-            <element signature="e#3954#6452#0" />
-            <element signature="e#6509#7070#0" />
-            <element signature="e#7154#8630#0" />
-            <element signature="e#8732#11027#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../AiWeb/组网测试/组网测试记录-190826/gw/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="14" column="22" lean-forward="true" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../公司/1280定位项目/Ranging_Searial_Tool/serial_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-230">
-          <caret line="50" column="9" selection-start-line="50" selection-start-column="8" selection-end-line="50" selection-end-column="9" />
-          <folding>
-            <element signature="e#24#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../AiWeb/组网测试/测试工具/aiweb测试工具-190924/aiweb_test.py" />
+    <entry file="file://$PROJECT_DIR$/../AiWeb/组网测试/组网测试记录-190826/gw/config.py" />
+    <entry file="file://$PROJECT_DIR$/../公司/1280定位项目/Ranging_Searial_Tool/serial_test.py" />
     <entry file="file://D:/Python36/Lib/site-packages/openpyxl/utils/cell.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3082">
@@ -453,20 +425,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/123.py" />
-    <entry file="file://$PROJECT_DIR$/../aiweb固件/200303/debug_tools.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="9" column="18" lean-forward="true" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Python36/Lib/tkinter/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-349">
-          <caret line="1701" selection-start-line="1701" selection-end-line="1701" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../aiweb固件/200303/debug_tools.py" />
     <entry file="file://D:/Python36/Lib/site-packages/openpyxl/chart/_chart.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="686">
@@ -481,30 +440,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/Python36/Lib/site-packages/openpyxl/styles/fills.py">
+    <entry file="file://E:/Desktop/aiweb_test_tool/aiweb_test.py" />
+    <entry file="file://E:/Desktop/aiweb_test_tool/test_tool.py" />
+    <entry file="file://$PROJECT_DIR$/aiweb_test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-36">
-          <caret line="86" column="18" selection-start-line="86" selection-start-column="18" selection-end-line="86" selection-end-column="18" />
+        <state relative-caret-position="27">
+          <caret line="482" column="27" selection-start-line="482" selection-start-column="27" selection-end-line="482" selection-end-column="27" />
+          <folding>
+            <element signature="e#24#34#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/aiweb_test.py">
+    <entry file="file://D:/Python36/Lib/tkinter/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
-          <folding>
-            <element signature="e#24#34#0" expanded="true" />
-            <element signature="e#609#804#0" />
-            <element signature="e#829#1812#0" />
-            <element signature="e#1837#2762#0" />
-            <element signature="e#2825#3091#0" />
-            <element signature="e#3118#3337#0" />
-            <element signature="e#3408#3780#0" />
-            <element signature="e#3923#6421#0" />
-            <element signature="e#6478#7037#0" />
-            <element signature="e#7121#8598#0" />
-            <element signature="e#8700#12018#0" />
-          </folding>
+        <state relative-caret-position="45846">
+          <caret line="1701" selection-start-line="1701" selection-end-line="1701" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Python36/Lib/site-packages/openpyxl/styles/fills.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1836">
+          <caret line="86" column="18" selection-start-line="86" selection-start-column="18" selection-end-line="86" selection-end-column="18" />
         </state>
       </provider>
     </entry>
