@@ -290,8 +290,17 @@ def uplink_sucess_rate(cmd, shortID_dict, dowmlink_cnt, filename='新建文本�
         if str_check == 'procBody application data':  # 定位目标数据的位置，当前为目标数据的上一行
             str_check = f.readline().strip()
             rows_cnt = rows_cnt + 1
+            str_check = f.readline().strip()
+            rows_cnt = rows_cnt + 1
+            #定位数据
+            # procBody application data
+            # 2020-04-18 11:23:38.676549
+            # 0000  75 31 30 36 30 31 31 31  31 31 31 31 31 31 31 31  u1060111 11111111
+            print(str_check)
+            print("-----------------------------------------------------------------------------")
+            rows_cnt = rows_cnt + 1
             if len(str_check) == len(sample_str.strip()):  # 判断数据长度是否满足要求
-                if str_check[-17:-15] == cmd:  # 判断是否为 120s 下行数据
+                if str_check[-17:-15] == cmd:  # 判断是否为 20/120s 下行数据
                     print(str_check)
                     packet_cnt_now = str_check[-15:-12]  # 获取当前数据包计数
                     print("当前包计数：%s"%(packet_cnt_now))
@@ -306,18 +315,19 @@ def uplink_sucess_rate(cmd, shortID_dict, dowmlink_cnt, filename='新建文本�
                             data_time = data_time_now
                             print("计数：%d"%(dowmlink_cnt[target_node]))
                         else:
-                            if cmd == 'u1':
+                            if cmd == 'u1':#20s间隔上行数据
                                 if data_time == '-':
                                     print("time now:%s"%(data_time_now))
                                     data_time = data_time_now
                                 time_interval = int(data_time_now[8:10])*24*3600+int(data_time_now[11:13])*3600+int(data_time_now[14:16])*60+int(data_time_now[17:19])\
                                                 -int(data_time[8:10])*24*3600-int(data_time[11:13])*3600-int(data_time[14:16])*60-int(data_time[17:19])
-                                if time_interval < 100: 
+
+                                if time_interval < 100:
                                     packet_cnt = int(packet_cnt_now)
+                                    print('当前包计数',packet_cnt)
                                     dowmlink_cnt[target_node] = dowmlink_cnt[target_node] + 1
                                     data_time = data_time_now
                                 else:
-
                                     # text.insert((1.0), 'time_interval%d\n' % (time_interval))
                                     text.insert((1.0), '节点编号：%s  成功次数:%s  成功率:%05.2f%% 测试时间：%s\n'
                                           % (target_node, str(dowmlink_cnt[target_node]).rjust(2),
@@ -328,17 +338,20 @@ def uplink_sucess_rate(cmd, shortID_dict, dowmlink_cnt, filename='新建文本�
                                     result_to_excel(target_node, data_time, success_rate, test_cycle_cnt, 1,shortID_dict)
                                     dowmlink_cnt[target_node] = 0
                                     packet_cnt = 0
-                            if cmd == 'u2':
-                                text.insert((1.0), '节点编号：%s  成功次数:%s  成功率:%05.2f%% 测试时间：%s\n'
-                                      % (target_node, str(dowmlink_cnt[target_node]).rjust(2),
-                                         int(dowmlink_cnt[target_node]) / nun_per_nodes * 100, data_time))
-                                test_cycle_cnt += 1
-                                success_rate = int(dowmlink_cnt[target_node]) / nun_per_nodes
-                                result_to_excel(target_node, data_time, success_rate, test_cycle_cnt, 2,shortID_dict_no_use)
-                                result_to_excel(target_node, data_time, success_rate, test_cycle_cnt, 3,shortID_dict_no_use,1)
-                                window.update()
-                                dowmlink_cnt[target_node] = 0
-                                packet_cnt = 0
+                            if cmd == 'u2':#120s间隔上行数据
+                                if test_cycle_cnt == 0:
+                                    test_cycle_cnt += 1
+                                else:
+                                    text.insert((1.0), '节点编号：%s  成功次数:%s  成功率:%05.2f%% 测试时间：%s\n'
+                                                % (target_node, str(dowmlink_cnt[target_node]).rjust(2),
+                                                   int(dowmlink_cnt[target_node]) / nun_per_nodes * 100, data_time))
+                                    success_rate = int(dowmlink_cnt[target_node]) / nun_per_nodes
+                                    result_to_excel(target_node, data_time, success_rate, test_cycle_cnt, 2,shortID_dict_no_use)
+                                    result_to_excel(target_node, data_time, success_rate, test_cycle_cnt, 3,shortID_dict_no_use,1)
+                                    test_cycle_cnt += 1
+                                    window.update()
+                                    dowmlink_cnt[target_node] = 0
+                                    packet_cnt = 0
                         valid_rows_cnt = valid_rows_cnt + 1
         if rows_cnt == rows - 1:
             if cmd == 'u1':
@@ -352,12 +365,20 @@ def uplink_sucess_rate(cmd, shortID_dict, dowmlink_cnt, filename='新建文本�
                 result_to_excel(target_node, data_time, success_rate, test_cycle_cnt, 1, shortID_dict)
                 dowmlink_cnt[target_node] = 0
                 packet_cnt = 0
-            if cmd == 'u2':
-                text.insert((1.0), '节点编号：%s  成功次数:%s  成功率:%05.2f%% 测试时间：%s\n'
-                            % (target_node, str(dowmlink_cnt[target_node]).rjust(2),
-                               int(dowmlink_cnt[target_node]) / nun_per_nodes * 100, data_time))
-                test_cycle_cnt += 1
-                success_rate = int(dowmlink_cnt[target_node]) / nun_per_nodes
+            if cmd == 'u2':#最后一组使用当前包计数作为改组的总包数
+                print('end line，','当前包计数', packet_cnt)
+                if packet_cnt == 0:
+                    text.insert((1.0), '节点编号：%s  成功次数:%s  成功率:%05.2f%% 测试时间：%s\n'
+                                % (target_node, str(dowmlink_cnt[target_node]).rjust(2),
+                                   int(dowmlink_cnt[target_node]) / nun_per_nodes * 100, data_time))
+                    success_rate = int(dowmlink_cnt[target_node]) / nun_per_nodes
+                else:
+                    text.insert((1.0), '节点编号：%s  成功次数:%s  成功率:%05.2f%% 测试时间：%s\n'
+                                % (target_node, str(dowmlink_cnt[target_node]).rjust(2),
+                                   int(dowmlink_cnt[target_node]) / packet_cnt * 100, data_time))
+                    success_rate = int(dowmlink_cnt[target_node]) / packet_cnt
+                if test_cycle_cnt ==0:
+                    test_cycle_cnt += 1
                 result_to_excel(target_node, data_time, success_rate, test_cycle_cnt, 2, shortID_dict_no_use)
                 result_to_excel(target_node, data_time, success_rate, test_cycle_cnt, 3, shortID_dict_no_use, 1)
                 window.update()
@@ -426,7 +447,7 @@ def uplink_sucess_rate_120s():
     task_info_show('120s上行测试统计结果')
 def all_sucess_rate():
     task_info_show('一键统计开始')
-    downlink_sucess_rate_ping()
+    #downlink_sucess_rate_ping()
     uplink_sucess_rate_20s()
     uplink_sucess_rate_120s()
     task_info_show('一键统计结束')
