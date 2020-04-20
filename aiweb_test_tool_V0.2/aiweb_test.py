@@ -14,8 +14,8 @@ from openpyxl.styles import numbers
 from openpyxl.styles import PatternFill
 from openpyxl import load_workbook
 from openpyxl.chart import BarChart, Series, Reference
-
 import logging
+
 result_list = result_storage()
 filename = 'logXX.log'
 #测试节点
@@ -171,6 +171,7 @@ def creat_bar_chart(test_num = 0,chart_title = ''):
     chart1.set_categories(cats)
     chart1.shape = 4
     sheet.add_chart(chart1,'A17')
+
 def downlink_test(shortID_dict,cmd,packet_cnt_range = 3,packet_intervals = 1):
     m = PyMouse()
     k = PyKeyboard()
@@ -178,9 +179,10 @@ def downlink_test(shortID_dict,cmd,packet_cnt_range = 3,packet_intervals = 1):
     shortID_cnt = 0  # 短地址键值计数
     packet_cnt = 1  # 包计数
     send_packet = 'a'  # 组包用字符串
-    m.click(132, 29, 1, 1)  # 激活窗口，不知道还有啥好方法
+   # m.click(132, 29, 1, 1)  # 激活窗口，不知道还有啥好方法
     while packet_cnt <= packet_cnt_range:
         for shortID_cnt in range(len(shortID_dict)):
+            m.click(370, 850, 1, 1)  # 激活窗口，不知道还有啥好方法
             packet_cnt_str = str(packet_cnt)
             shortID_dict[shortID_cnt] = shortID_dict[shortID_cnt].zfill(4)
             if cmd == 'ping':
@@ -367,35 +369,35 @@ def task_info_show(task_info=''):
     text.insert((1.0), '%s  %s\n'%(task_info,datetime.datetime.now()))
     text.insert((1.0), '---------------------------------------\n')
     window.update()
-def task_dowmlink_ping():
+def task_dowmlink_ping(interval=5):
     task_info_show('at+ping 自动发送测试开始')
-    downlink_test(shortID_dict, 'ping', 50, 6)
+    downlink_test(shortID_dict, 'ping', 50, interval)
     task_info_show('at+ping 自动发送测试结束')
-def task_dowmlink_st():
+def task_dowmlink_st(interval=5):
     task_info_show('下行测试开始')
-    downlink_test(shortID_dict, 'st4', 50, 6)
-    downlink_test(shortID_dict, 'st5', 5, 6)
+    downlink_test(shortID_dict, 'st4', 50, interval)
+    #downlink_test(shortID_dict, 'st5', 5, interval)
     task_info_show('下行测试结束')
-def task_uplink_20s_on():
+def task_uplink_20s_on(interval=5):
     cnt = 0
     task_info_show('20s上行测试开始')
-    downlink_test(shortID_dict, 'st1', 5, 4)
-    while cnt != 240:
+    downlink_test(shortID_dict, 'st1', 5, interval)
+    while cnt != 200:
         cnt = cnt+1
         time.sleep(10)  # 阻塞式休眠
         task_info_show('20s上行测试中。。。')
     task_info_show('20s上行测试结束')
-def task_uplink_120s_on_1():
+def task_uplink_120s_on_1(interval=5):
     task_info_show('待测节点上行心跳开启中')
-    downlink_test(shortID_dict, 'st2', 5, 4)
+    downlink_test(shortID_dict, 'st2', 5, 5)
     task_info_show('待测节点上行心跳开启完成')
-def task_uplink_120s_on_2():
+def task_uplink_120s_on_2(interval=5):
     task_info_show('非待测节点上行心跳开启中')
-    downlink_test(shortID_dict_no_use, 'st2', 5, 4)
+    downlink_test(shortID_dict_no_use, 'st2', 5, interval)
     task_info_show('非待测节点上行心跳开启完成')
-def task_uplink_120s_off():
+def task_uplink_120s_off(interval=5):
     task_info_show('待测节点上行心跳关闭中')
-    downlink_test(shortID_dict, 'st3', 5, 4)
+    downlink_test(shortID_dict, 'st3', 5, interval)
     task_info_show('待测节点上行心跳关闭完成')
 def downlink_sucess_rate_ping():
     time_write_flag = 1
