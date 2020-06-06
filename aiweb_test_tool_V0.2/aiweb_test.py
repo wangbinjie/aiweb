@@ -96,7 +96,7 @@ def get_char(number):
     factor, moder = divmod(number, 26) # 26 字母个数
     mod_char = chr(moder + 65)          # 65 -> 'A'
     if factor != 0:
-        mod_char = getchar(factor-1) + mod_char # factor - 1 : 商为有效值时起始数为 1 而余数是 0
+        mod_char = get_char(factor-1) + mod_char # factor - 1 : 商为有效值时起始数为 1 而余数是 0
     return mod_char
 def set_cell_color(column = 'a',row = 1,data = 100,test_num = 0):
     sheet = wb.worksheets[test_num]
