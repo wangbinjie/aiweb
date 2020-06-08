@@ -3,13 +3,14 @@ import datetime
 import openpyxl
 from openpyxl.styles import Alignment
 from openpyxl.styles import PatternFill
-from openpyxl.chart import BarChart, Series, Reference
+from openpyxl.chart import BarChart, Reference
 import json
 import GlobalPara as G_Para
 
 
 def node_laoding():
-    global shortID_dict, shortID_dict_no_use
+    global shortID_dict, shortID_hertBeat
+    result_dict = {}
     file2 = 'nodelist.json'
     try:
         with open(file2, 'r', encoding="utf-8") as file:
@@ -18,26 +19,33 @@ def node_laoding():
     except BaseException:
         log_list('节点载入失败')
     shortID_dict = nodelist.get('测试节点')
-    shortID_dict_no_use = nodelist.get('心跳节点')
+    shortID_hertBeat = nodelist.get('心跳节点')
     G_Para.set_value('shortID', shortID_dict)
-    G_Para.set_value('shortID_hertBeat', shortID_dict_no_use)
+    G_Para.set_value('shortID_hertBeat', shortID_hertBeat)
     shortID = G_Para.get_value('shortID')
     shortID_hertBeat = G_Para.get_value('shortID_hertBeat')
     log_list('\n')
     log_list('\n')
     log_list('---------------------------------------')
-    log_list('载入节点列表')
+    task_info_show('载入节点列表')
     log_list('待测节点：')
     log_list('%s' % (shortID))
     log_list('心跳节点：')
     log_list('%s' % (shortID_hertBeat))
     log_list('---------------------------------------')
+    for key in shortID:
+        result_dict.setdefault(key, 0)
+    for key in shortID_hertBeat:
+        result_dict.setdefault(key, 0)
+    G_Para.set_value('result_dict', result_dict)
+    result_dict = G_Para.get_value('result_dict')
+    print(result_dict)
 
 
 def excel_create():
     global FILE_PATH
     global wb
-    FILE_PATH = r'.\Results\\'
+    FILE_PATH = r'.\TestResults\\'
     FILE_NAME = 'Aiweb Test Result'
     wb = openpyxl.Workbook()
     ws1 = wb.active
@@ -62,7 +70,7 @@ def excel_create():
     # 生成文件名
     FILE_PATH = FILE_PATH + FILE_NAME + FILE_TIME + ".xlsx"
     wb.save(FILE_PATH)
-    print(FILE_PATH)
+    task_info_show('Excel 创建成功')
 
 
 def excel_write(sheet_num=0, row=1, col=1, data=''):
@@ -76,6 +84,10 @@ def excel_write(sheet_num=0, row=1, col=1, data=''):
         wrap_text=True)
     sheet[column + str(row)].alignment = alignment
     # wb.save(FILE_PATH)
+
+
+def excel_save():
+    wb.save(FILE_PATH)
 
 
 def get_char(number):
@@ -213,3 +225,7 @@ def log_list(log):
         mylog = G_Para.get_value('mylog')
         mylog.append(log)
         G_Para.set_value('mylog', mylog)
+
+def task_info_show(task_info=''):
+    log_list('%s  %s'%(task_info,datetime.datetime.now()))
+    log_list('---------------------------------------')

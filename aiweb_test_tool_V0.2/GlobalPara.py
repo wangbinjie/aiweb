@@ -1,6 +1,11 @@
 # -*- coding: utf-8 -*-
 
+
 def _init():
+    """
+
+    :rtype: object
+    """
     global _global_dict
     _global_dict = {}
 
