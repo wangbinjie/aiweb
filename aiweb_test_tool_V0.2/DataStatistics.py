@@ -9,15 +9,14 @@ def downlink_sucess_rate(shortID, result_dict, filename='新建文本文档.txt'
     f = open(filename, encoding='utf-8')
     rows = len(f.readlines())
     f = open(filename, encoding='utf-8')
-    sample_str = '     0000  75 33 30 30 30 31 31 31  31 31 31 31 31 31 31 31  u3000111 11111111'
+    # sample_str = '     0000  75 33 30 30 30 31 31 31  31 31 31 31 31 31 31 31  u3000111 11111111'
     nun_per_nodes = 50.0  # 单节点测试次数
     rows_cnt = 0  # 读取行数计数
     valid_rows_cnt = 0  # 有效行计数
-    node_num = 0
+    node_num = 0  # 解析出的节点编号
     data_time_now = '-'
     data_time = '-'
     packet_cnt = -1
-    time_interval = 0
     result_dict[target_node] = 0
     test_cycle_cnt = 0
     while rows_cnt < rows:
@@ -44,7 +43,7 @@ def downlink_sucess_rate(shortID, result_dict, filename='新建文本文档.txt'
                         MyFiles.log_list('节点编号：%s  成功次数:%s  成功率:%05.2f%% 测试时间：%s\n'
                               % (target_node, str(result_dict[target_node]).rjust(2),
                                  int(result_dict[target_node]) / nun_per_nodes * 100, data_time))
-                        test_cycle_cnt +=1
+                        test_cycle_cnt += 1
                         success_rate = int(result_dict[target_node]) / nun_per_nodes
                         MyFiles.result_to_excel(target_node,data_time,success_rate,test_cycle_cnt,0,shortID)
                         result_dict[target_node] = 0
@@ -152,7 +151,7 @@ def uplink_sucess_rate(cmd, shortID, result_dict, filename='新建文本文档.t
                                 % (target_node, str(result_dict[target_node]).rjust(2),
                                    int(result_dict[target_node]) / packet_cnt * 100, data_time))
                     success_rate = int(result_dict[target_node]) / packet_cnt
-                if test_cycle_cnt ==0:
+                if test_cycle_cnt == 0:
                     test_cycle_cnt += 1
                 shortID_hertBeat = G_Para.get_value('shortID_hertBeat')
                 MyFiles.result_to_excel(target_node, data_time, success_rate, test_cycle_cnt, 2, shortID_hertBeat)

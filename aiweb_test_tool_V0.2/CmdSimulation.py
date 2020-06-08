@@ -9,10 +9,7 @@ import MyFiles
 def downlink_test(shortID, cmd, packet_cnt_range=3, packet_intervals=1):
     m = PyMouse()
     k = PyKeyboard()
-    shortID_cnt = 0  # 短地址键值计数
     packet_cnt = 1  # 包计数
-    send_packet = 'a'  # 组包用字符串
-    # m.click(132, 29, 1, 1)  # 激活窗口，不知道还有啥好方法
     while packet_cnt <= packet_cnt_range:
         for shortID_cnt in range(len(shortID)):
             m.click(370, 850, 1, 1)  # 激活窗口，不知道还有啥好方法
