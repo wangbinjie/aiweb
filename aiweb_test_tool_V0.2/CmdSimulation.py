@@ -16,21 +16,22 @@ def downlink_test(shortID, cmd, packet_cnt_range=3, packet_intervals=1):
     while packet_cnt <= packet_cnt_range:
         for shortID_cnt in range(len(shortID)):
             m.click(370, 850, 1, 1)  # 激活窗口，不知道还有啥好方法
-            packet_cnt_str = str(packet_cnt)
-            if cmd == 'ping':
-                send_packet = 'at+ping,' + shortID[shortID_cnt].zfill(
-                    4) + ',08' + shortID[shortID_cnt] + '38' + packet_cnt_str.zfill(8)
-            elif cmd == 'st1':  # 20s上行测试开启
-                send_packet = 'at+st,' + shortID[shortID_cnt].zfill(4) + ',Wd40001'
-            elif cmd == 'st2':  # 120s上行测试开启
-                send_packet = 'at+st,' + shortID[shortID_cnt].zfill(4) + ',Wd50001'
-            elif cmd == 'st3':  # 120s上行测试关闭
-                send_packet = 'at+st,' + shortID[shortID_cnt].zfill(4) + ',Wd50000'
-            elif cmd == 'st4':  # 下行测试
-                send_packet = 'at+st,' + shortID[shortID_cnt].zfill(4) + ',Wd3' + packet_cnt_str.zfill(
-                    3) + '11111111111111111111111111'
-            elif cmd == 'st5':  # 下行测试成功率回读
-                send_packet = 'at+st,' + shortID[shortID_cnt].zfill(4) + ',Wd6' + packet_cnt_str.zfill(3) + '1'
+            packet_cnt_str = str(packet_cnt).zfill(8)
+            shortID_str = shortID[shortID_cnt].zfill(4)
+            cmd_dict = {
+                'ping': 'at+ping,' + shortID_str + ',08' + shortID_str + '38' + packet_cnt_str,
+                # 20s上行测试开启
+                'st1': 'at+st,' + shortID_str + ',Wd40001',
+                # 120s上行测试开启
+                'st2': 'at+st,' + shortID_str + ',Wd50001',
+                # 120s上行测试关闭
+                'st3': 'at+st,' + shortID_str + ',Wd50000',
+                # 下行测试
+                'st4': 'at+st,' + shortID_str + ',Wd3' + packet_cnt_str + '01234567890123456789',
+                # 下行测试成功率回读
+                'st5': 'at+st,' + shortID_str + ',Wd6' + packet_cnt_str + '1',
+            }
+            send_packet = cmd_dict[cmd]
             k.type_string(send_packet)
             k.tap_key(k.enter_key)
             MyFiles.log_list(send_packet)

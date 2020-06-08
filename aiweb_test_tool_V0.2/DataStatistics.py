@@ -25,7 +25,7 @@ def downlink_sucess_rate(shortID, result_dict, filename='新建文本文档.txt'
         rows_cnt = rows_cnt + 1
         if str_check[:5] == 'Frame':
             data_time_now = str_check[-26:-7]
-        if str_check[:9] == 'recv_pong'and str_check[:13] !='recv_pong not':  # 定位目标数据的位置，当前为目标数据的上一行
+        if str_check[:9] == 'recv_pong'and str_check[:13] !='recv_pong not':  # 定位目标数据的位置
             #node_num = hex(int(str_check[10:13]))  # 获取当前节点小名，并转换为16进制
             node_num = re.match(r'recv_pong (.*) ', str_check)
             try:
