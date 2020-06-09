@@ -167,7 +167,7 @@ def sucess_rate_ping():
     for shortID_cnt in range(len(shortID)):
         target_node = shortID[shortID_cnt]
         downlink_sucess_rate(shortID, result_dict, filename, target_node)
-        MyFiles.log_list( '---------------------------------------\n')
+        MyFiles.log_list('---------------------------------------\n')
     MyFiles.creat_bar_chart(0, 'Ping 成功率统计图')
     MyFiles.excel_save()
     MyFiles.task_info_show('下行测试统计结果')
@@ -181,7 +181,7 @@ def sucess_rate_up20s():
         target_node = shortID[shortID_cnt]
         uplink_sucess_rate(
             'u1', shortID, result_dict, filename, target_node)
-        MyFiles.log_list( '---------------------------------------\n')
+        MyFiles.log_list('---------------------------------------\n')
     MyFiles.creat_bar_chart(1, '20s 上行成功率统计图')
     MyFiles.excel_save()
     MyFiles.task_info_show('20s上行测试统计结果')
@@ -196,7 +196,7 @@ def sucess_rate_up120s():
         target_node = shortID_hertBeat[shortID_cnt]
         uplink_sucess_rate(
             'u2', shortID, result_dict, filename, target_node)
-        MyFiles.log_list( '---------------------------------------\n')
+        MyFiles.log_list('---------------------------------------\n')
     MyFiles.creat_bar_chart(2, '120s 上行成功率统计图')
     MyFiles.excel_save()
     MyFiles.task_info_show('120s上行测试统计结果')
