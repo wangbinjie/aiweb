@@ -24,13 +24,13 @@ def downlink_sucess_rate(shortID, result_dict, filename='新建文本文档.txt'
         rows_cnt = rows_cnt + 1
         if str_check[:5] == 'Frame':
             data_time_now = str_check[-26:-7]
-        if str_check[:9] == 'recv_pong'and str_check[:13] !='recv_pong not':  # 定位目标数据的位置
-            #node_num = hex(int(str_check[10:13]))  # 获取当前节点小名，并转换为16进制
+        if str_check[:9] == 'recv_pong'and str_check[:13] != 'recv_pong not':  # 定位目标数据的位置
+            # node_num = hex(int(str_check[10:13]))  # 获取当前节点小名，并转换为16进制
             node_num = re.match(r'recv_pong (.*) ', str_check)
             try:
                 node_num = hex(int(node_num.group(1)))
             except:
-                MyFiles.log_list('节点格式转换异常')
+                MyFiles.task_info_show('节点格式转换异常')
             else:
                 node_num = str(node_num).upper().replace('0X','').zfill(4)
                 packet_cnt_now = str_check[-3:-1]  # 获取当前数据包计数
@@ -140,7 +140,8 @@ def uplink_sucess_rate(cmd, shortID, result_dict, filename='新建文本文档.t
                 MyFiles.result_to_excel(target_node, data_time, success_rate, test_cycle_cnt, 1, shortID)
                 result_dict[target_node] = 0
                 packet_cnt = 0
-            if cmd == 'u2':#最后一组使用当前包计数作为改组的总包数
+            # 最后一组使用当前包计数作为该组总包数
+            if cmd == 'u2':
                 if packet_cnt == 0:
                     MyFiles.log_list('节点编号：%s  成功次数:%s  成功率:%05.2f%% 测试时间：%s\n'
                                 % (target_node, str(result_dict[target_node]).rjust(2),

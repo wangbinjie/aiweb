@@ -50,7 +50,7 @@ def excel_create():
     wb = openpyxl.Workbook()
     ws1 = wb.active
     ws1.title = 'Ping Test Result'
-    #ws1 = wb.create_sheet(title=u'Ping Test Result')
+    # ws1 = wb.create_sheet(title=u'Ping Test Result')
     ws2 = wb.create_sheet(title=u'20s Test Result')
     ws3 = wb.create_sheet(title=u'120s Test Result')
     ws4 = wb.create_sheet(title=u'120s Test Result Backup')
@@ -92,7 +92,7 @@ def excel_save():
 
 def get_char(number):
     factor, moder = divmod(number, 26)  # 26 字母个数
-    mod_char = chr(moder + 65)          # 65 -> 'A'
+    mod_char = chr(moder + 65)  # 65 -> 'A'
     if factor != 0:
         # factor - 1 : 商为有效值时起始数为 1 而余数是 0
         mod_char = get_char(factor - 1) + mod_char
@@ -226,6 +226,8 @@ def log_list(log):
         mylog.append(log)
         G_Para.set_value('mylog', mylog)
 
+
 def task_info_show(task_info=''):
-    log_list('%s  %s'%(task_info,datetime.datetime.now()))
-    log_list('---------------------------------------')
+    task_info = task_info + '   ' + str(datetime.datetime.now())
+    log_list('%s' % (task_info))
+    log_list('-'*len(task_info))
