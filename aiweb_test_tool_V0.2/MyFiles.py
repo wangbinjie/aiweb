@@ -33,8 +33,9 @@ def node_laoding():
     log_list('心跳节点：')
     log_list('%s' % (shortID_hertBeat))
     log_list('---------------------------------------')
+    # 生成result_dict,用于存储统计结果，并设默认值为0.
     for key in shortID:
-        result_dict.setdefault(key, 0)
+        result_dict.setdefalut(key, 0)
     for key in shortID_hertBeat:
         result_dict.setdefault(key, 0)
     G_Para.set_value('result_dict', result_dict)
@@ -219,7 +220,7 @@ def creat_bar_chart(test_num=0, chart_title=''):
 
 
 def log_list(log):
-    if G_Para.get_value('mylog') == None:
+    if G_Para.get_value('mylog') is None:
         G_Para.set_value('mylog', [])
     else:
         mylog = G_Para.get_value('mylog')
@@ -230,4 +231,4 @@ def log_list(log):
 def task_info_show(task_info=''):
     task_info = task_info + '   ' + str(datetime.datetime.now())
     log_list('%s' % (task_info))
-    log_list('-'*len(task_info))
+    log_list('-' * len(task_info))
