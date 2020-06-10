@@ -13,13 +13,13 @@ def downlink_test(shortID, cmd, packet_cnt_range=3, packet_intervals=1):
             packet_cnt_str = str(packet_cnt).zfill(3)
             shortID_str = shortID[shortID_cnt].zfill(4)
             cmd_dict = {
-                'ping': 'at{VK_ADD}ping,' + shortID_str + ',08' + shortID_str + '38' + packet_cnt_str.zfill(3),
+                'ping': 'at{VK_ADD}ping,' + shortID_str + ',08' + shortID_str + '38' + packet_cnt_str.zfill(8),
                 # 20s上行测试开启
-                'st1': 'at{VK_ADD}st,' + shortID_str + ',Wd40001'+ packet_cnt_str,
+                'st1': 'at{VK_ADD}st,' + shortID_str + ',Wd40001' + packet_cnt_str,
                 # 120s上行测试开启
-                'st2': 'at{VK_ADD}st,' + shortID_str + ',Wd50001'+ packet_cnt_str,
+                'st2': 'at{VK_ADD}st,' + shortID_str + ',Wd50001' + packet_cnt_str,
                 # 120s上行测试关闭
-                'st3': 'at{VK_ADD}st,' + shortID_str + ',Wd50000'+ packet_cnt_str,
+                'st3': 'at{VK_ADD}st,' + shortID_str + ',Wd50000' + packet_cnt_str,
                 # 下行测试
                 'st4': 'at{VK_ADD}st,' + shortID_str + ',Wd3' + packet_cnt_str + '01234567890123456789',
                 # 下行测试成功率回读
@@ -27,6 +27,7 @@ def downlink_test(shortID, cmd, packet_cnt_range=3, packet_intervals=1):
             }
             send_packet = cmd_dict[cmd]
             autoCmd.typecmd(send_packet)
+            send_packet = send_packet.replace('{VK_ADD}', '+')
             MyFiles.task_info_show(send_packet)
             time.sleep(packet_intervals)
         packet_cnt = packet_cnt + 1
@@ -82,7 +83,7 @@ def comp_test(cnt=1):
     MyFiles.task_info_show('综合测试开始')
     task_up120s_off()
     task_up120s_on_2()
-    for i in range(cnt):
+    for _ in range(cnt):
         task_ping()
         task_up20s_on()
         task_st()

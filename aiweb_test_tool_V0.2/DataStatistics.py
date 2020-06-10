@@ -4,13 +4,11 @@ import GlobalPara as G_Para
 import MyFiles
 
 
-def downlink_sucess_rate(shortID, result_dict, filename='新建文本文档.txt', target_node='0001'):
+def downlink_sucess_rate(shortID, result_dict, filename='新建文本文档.txt', target_node='0001', nun_per_nodes=50.0):
     print(filename)
     f = open(filename, encoding='utf-8')
     rows = len(f.readlines())
     f = open(filename, encoding='utf-8')
-    # sample_str = '     0000  75 33 30 30 30 31 31 31  31 31 31 31 31 31 31 31  u3000111 11111111'
-    nun_per_nodes = 50.0  # 单节点测试次数
     rows_cnt = 0  # 读取行数计数
     valid_rows_cnt = 0  # 有效行计数
     node_num = 0  # 解析出的节点编号
@@ -59,12 +57,11 @@ def downlink_sucess_rate(shortID, result_dict, filename='新建文本文档.txt'
             packet_cnt = 0
 
 
-def uplink_sucess_rate(cmd, shortID, result_dict, filename='新建文本文档.txt', target_node='0001'):
+def uplink_sucess_rate(cmd, shortID, result_dict, filename='新建文本文档.txt', target_node='0001', nun_per_nodes = 100.0):
     f = open(filename, encoding='utf-8')
     rows = len(f.readlines())
     f = open(filename, encoding='utf-8')
     sample_str = '     0000  75 33 30 30 30 31 31 31  31 31 31 31 31 31 31 31  u3000111 11111111'
-    nun_per_nodes = 100.0  # 单节点测试次数
     rows_cnt = 0  # 读取行数计数
     valid_rows_cnt = 0  # 有效行计数
     data_time_now = '-'
@@ -82,7 +79,7 @@ def uplink_sucess_rate(cmd, shortID, result_dict, filename='新建文本文档.t
             rows_cnt = rows_cnt + 1
             str_check = f.readline().strip()
             rows_cnt = rows_cnt + 1
-            rows_cnt = rows_cnt + 1
+            # rows_cnt = rows_cnt + 1
             if len(str_check) == len(sample_str.strip()):  # 判断数据长度是否满足要求
                 if str_check[-17:-15] == cmd:  # 判断是否为 20/120s 下行数据
                     packet_cnt_now = str_check[-15:-12]  # 获取当前数据包计数
