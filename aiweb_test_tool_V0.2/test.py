@@ -29,17 +29,39 @@
 # print(shortID)
 # print(shortID_hertBeat)
 
-from ctypes import windll as win32
-WM_CHAR = 0x0102
+# from ctypes import windll as win32
+# WM_CHAR = 0x0102
+#
+# try:
+#     hWnd = win32.user32.FindWindowW('SecureCRT Application', None)
+#     print(hWnd)
+#     assert hWnd
+#     hEdit = win32.user32.FindWindowExW(hWnd, None, 'Serial-COM13 - SecureCRT', None)
+#     assert hEdit
+# except AssertionError:
+#     print('SecureCRT not found')
+# else:
+#     for char in 'Hello, 世界\n':
+#         win32.user32.SendMessageW(hEdit, WM_CHAR, ord(char), None)
 
-try:
-    hWnd = win32.user32.FindWindowW('SecureCRT Application', None)
-    print(hWnd)
-    assert hWnd
-    hEdit = win32.user32.FindWindowExW(hWnd, None, 'Serial-COM13 - SecureCRT', None)
-    assert hEdit
-except AssertionError:
-    print('SecureCRT not found')
+
+import os
+import copy
+from datetime import *
+
+
+xlist = [x for x in os.listdir('.') if os.path.isfile(x) and os.path.splitext(x)[1] == '.bin']
+if len(xlist) == 0:
+    print('未找到 .bin 文件')
 else:
-    for char in 'Hello, 世界\n':
-        win32.user32.SendMessageW(hEdit, WM_CHAR, ord(char), None)
+    for file_old in xlist:
+        print('原始文件名：', file_old)
+        file_new = copy.deepcopy(file_old)
+        date_now = date.today()
+        date_now = date_now.strftime('%Y%m%d')
+        file_new = file_new.replace('.bin', date_now + '.bin')
+        try:
+            os.rename(file_old, file_new)
+            print('重命名成功：', file_new)
+        except:
+            print('重命名失败')

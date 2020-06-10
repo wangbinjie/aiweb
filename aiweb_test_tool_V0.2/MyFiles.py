@@ -15,7 +15,6 @@ def node_laoding():
     try:
         with open(file2, 'r', encoding="utf-8") as file:
             nodelist = json.load(file)
-            print(nodelist)
     except BaseException:
         log_list('节点载入失败')
     shortID_dict = nodelist.get('测试节点')
@@ -24,9 +23,6 @@ def node_laoding():
     G_Para.set_value('shortID_hertBeat', shortID_hertBeat)
     shortID = G_Para.get_value('shortID')
     shortID_hertBeat = G_Para.get_value('shortID_hertBeat')
-    log_list('\n')
-    log_list('\n')
-    log_list('---------------------------------------')
     task_info_show('载入节点列表')
     log_list('待测节点：')
     log_list('%s' % shortID)
@@ -38,9 +34,12 @@ def node_laoding():
     for key in shortID_hertBeat:
         result_dict.setdefault(key, 0)
     G_Para.set_value('result_dict', result_dict)
-    result_dict = G_Para.get_value('result_dict')
-    print(result_dict)
 
+
+def readme_loading():
+    with open('readme.txt', 'r',encoding='utf-8') as f:
+        readme = f.read()
+        log_list(readme)
 
 def excel_create():
     global FILE_PATH
@@ -221,10 +220,9 @@ def creat_bar_chart(test_num=0, chart_title=''):
 def log_list(log):
     if G_Para.get_value('mylog') is None:
         G_Para.set_value('mylog', [])
-    else:
-        mylog = G_Para.get_value('mylog')
-        mylog.append(log)
-        G_Para.set_value('mylog', mylog)
+    mylog = G_Para.get_value('mylog')
+    mylog.append(log)
+    G_Para.set_value('mylog', mylog)
 
 
 def task_info_show(task_info=''):
