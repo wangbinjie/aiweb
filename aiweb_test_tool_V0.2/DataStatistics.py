@@ -4,12 +4,13 @@ import GlobalPara as G_Para
 import MyFiles
 
 
-def downlink_sucess_rate(shortID, result_dict, filename='新建文本文档.txt', target_node='0001', nun_per_nodes=50.0):
-    print(filename)
+def downlink_sucess_rate(shortID, result_dict, filename='新建文本文档.txt', target_node='0001', ):
+    # print(filename)
     f = open(filename, encoding='utf-8')
     rows = len(f.readlines())
     f = open(filename, encoding='utf-8')
     rows_cnt = 0  # 读取行数计数
+    nun_per_nodes = G_Para.get_value('nun_per_nodes_ping')
     valid_rows_cnt = 0  # 有效行计数
     node_num = 0  # 解析出的节点编号
     data_time_now = '-'
@@ -57,10 +58,11 @@ def downlink_sucess_rate(shortID, result_dict, filename='新建文本文档.txt'
             packet_cnt = 0
 
 
-def uplink_sucess_rate(cmd, shortID, result_dict, filename='新建文本文档.txt', target_node='0001', nun_per_nodes = 100.0):
+def uplink_sucess_rate(cmd, shortID, result_dict, filename='新建文本文档.txt', target_node='0001', ):
     f = open(filename, encoding='utf-8')
     rows = len(f.readlines())
     f = open(filename, encoding='utf-8')
+    nun_per_nodes = G_Para.get_value('nun_per_nodes_up')
     sample_str = '     0000  75 33 30 30 30 31 31 31  31 31 31 31 31 31 31 31  u3000111 11111111'
     rows_cnt = 0  # 读取行数计数
     valid_rows_cnt = 0  # 有效行计数
