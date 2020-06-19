@@ -88,31 +88,37 @@ def comp_test(cnt=1):
     # print(shortID_hertBeat)
     MyFiles.task_info_show('综合测试开始')
 
-    MyFiles.task_info_show('功能测试开始')
-    autoCmd.typecmd('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
-    downlink_test(shortID, 'ping', int(24*60*60/60/node_num), 60)  # 32次
-    MyFiles.task_info_show('功能测试结束')
-
-    MyFiles.task_info_show('加压测试开始')
-    autoCmd.typecmd('bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb')
-
-    downlink_test(shortID, 'ping', int(6*60*60/1/node_num), 1, 1)  # 480
-    # 休眠等待10分钟
-    time.sleep(60*10)
-    autoCmd.typecmd('ccccccccccccccccccccccccccccccccccccccccccccccccc')
-    downlink_test(shortID, 'ping', int(6*60*60/60/node_num), 60)  # 8
-    MyFiles.task_info_show('加压测试结束')
-
-    MyFiles.task_info_show('极限测试开始')
-    autoCmd.typecmd('dddddddddddddddddddddddddddddddddddddddddddddddd')
-    downlink_test(shortID, 'ping', int(2*60*60/60/node_num), 60)  # 2
-    autoCmd.typecmd('eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee')
-    downlink_test(shortID, 'ping', int(2*60*60/30/node_num), 30)  # 4
-    autoCmd.typecmd('ffffffffffffffffffffffffffffffffffffffffffffffff')
-    downlink_test(shortID, 'ping', int(2*60*60/10/node_num), 10)  # 13
-    autoCmd.typecmd('gggggggggggggggggggggggggggggggggggggggggggggggg')
-    downlink_test(shortID, 'ping', int(2*60*60/5/node_num), 5)  # 26
-    MyFiles.task_info_show('极限测试结束')
+    MyFiles.task_info_show('下行测试，间隔30s')
+    downlink_test(shortID, 'st4', 50, 30)
+    MyFiles.task_info_show('下行测试，间隔10s')
+    downlink_test(shortID, 'st4', 50, 10)
+    MyFiles.task_info_show('下行测试，间隔5s')
+    downlink_test(shortID, 'st4', 50, 5)
+    # MyFiles.task_info_show('功能测试开始')
+    # autoCmd.typecmd('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
+    # downlink_test(shortID, 'ping', int(24*60*60/60/node_num), 60)  # 32次
+    # MyFiles.task_info_show('功能测试结束')
+    #
+    # MyFiles.task_info_show('加压测试开始')
+    # autoCmd.typecmd('bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb')
+    #
+    # downlink_test(shortID, 'ping', int(6*60*60/1/node_num), 1, 1)  # 480
+    # # 休眠等待10分钟
+    # time.sleep(60*10)
+    # autoCmd.typecmd('ccccccccccccccccccccccccccccccccccccccccccccccccc')
+    # downlink_test(shortID, 'ping', int(6*60*60/60/node_num), 60)  # 8
+    # MyFiles.task_info_show('加压测试结束')
+    #
+    # MyFiles.task_info_show('极限测试开始')
+    # autoCmd.typecmd('dddddddddddddddddddddddddddddddddddddddddddddddd')
+    # downlink_test(shortID, 'ping', int(2*60*60/60/node_num), 60)  # 2
+    # autoCmd.typecmd('eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee')
+    # downlink_test(shortID, 'ping', int(2*60*60/30/node_num), 30)  # 4
+    # autoCmd.typecmd('ffffffffffffffffffffffffffffffffffffffffffffffff')
+    # downlink_test(shortID, 'ping', int(2*60*60/10/node_num), 10)  # 13
+    # autoCmd.typecmd('gggggggggggggggggggggggggggggggggggggggggggggggg')
+    # downlink_test(shortID, 'ping', int(2*60*60/5/node_num), 5)  # 26
+    # MyFiles.task_info_show('极限测试结束')
 
     # task_up120s_off()
     # task_up120s_on_2()

@@ -276,25 +276,25 @@ print(sum)
 #                 index = bisect.bisect_right(nums, a + b - 1) - 1
 #                 res += index - j
 #         return res
-
-
-class Solution:
-    def triangleNumber(self, nums: List[int]) -> int:
-        # 2 pointers -- 对撞型 -- 2sum类
-        if not nums or len(nums) < 3:
-            return 0
-
-        _num = 0
-        nums = sorted(nums)
-
-        # i 对应于最大的那条边
-        for i in range(len(nums)):
-            left, right = 0, i - 1
-            while left < right:
-                if nums[left] + nums[right] > nums[i]:
-                    _num += right - left
-                    right -= 1
-                else:
-                    left += 1
-
-        return _num
+#
+#
+# class Solution:
+#     def triangleNumber(self, nums: List[int]) -> int:
+#         # 2 pointers -- 对撞型 -- 2sum类
+#         if not nums or len(nums) < 3:
+#             return 0
+#
+#         _num = 0
+#         nums = sorted(nums)
+#
+#         # i 对应于最大的那条边
+#         for i in range(len(nums)):
+#             left, right = 0, i - 1
+#             while left < right:
+#                 if nums[left] + nums[right] > nums[i]:
+#                     _num += right - left
+#                     right -= 1
+#                 else:
+#                     left += 1
+#
+#         return _num
