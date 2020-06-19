@@ -144,16 +144,157 @@
 # loop.run_until_complete(hello())
 # loop.close()
 
-import threading
-import asyncio
+# import threading
+# # import asyncio
+# #
+# # @asyncio.coroutine
+# # def hello():
+# #     print('Hello world! (%s)' % threading.currentThread())
+# #     yield from asyncio.sleep(1)
+# #     print('Hello again! (%s)' % threading.currentThread())
+# #
+# # loop = asyncio.get_event_loop()
+# # tasks = [hello(), hello()]
+# # loop.run_until_complete(asyncio.wait(tasks))
+# # loop.close()
 
-@asyncio.coroutine
-def hello():
-    print('Hello world! (%s)' % threading.currentThread())
-    yield from asyncio.sleep(1)
-    print('Hello again! (%s)' % threading.currentThread())
+# nums = [1, 2, 3, 4]
+# sums = [0]
+#
+# for i in range(len(nums)):
+#     sums.append(sums[i]+nums[i])
+#     # print(sums)
+# sums = sums[1:]
+# # print(sums)
 
-loop = asyncio.get_event_loop()
-tasks = [hello(), hello()]
-loop.run_until_complete(asyncio.wait(tasks))
-loop.close()
+# # arr = [4, 3, 1, 1, 3, 3, 2]
+# # k = 3
+# arr = [1]
+# k = 1
+# dict = {}
+# list = []
+# for key in arr:
+#     dict[key] = dict.get(key, 0) + 1
+# for k, v in dict.items():
+#     list.append(v)
+# # print(list)
+# list = sorted(list)
+# # print(list)
+# while len(list)!=0:
+#     if list[0] <= k:
+#         k = k - list[0]
+#         list.pop(0)
+#         # print(list)
+#     else:
+#         # print(len(list))
+#         break
+# print(len(list))
+# from collections import Counter
+# arr = [1]
+# k = 1
+#
+# word = Counter(arr)
+# res = sorted(word.items(), key=lambda item: item[1])
+# n = len(res)
+# for i in range(len(res)):
+#     if res[i][1] <= k:
+#         k -= res[i][1]
+#         n -= 1
+#     else:
+#         break
+# print(n)
+# arr = [2,4,1,8,3,5,1,3]
+# k = 3
+# dict = {}
+# list = []
+# for key in arr:
+#     dict[key] = dict.get(key, 0) + 1
+# # for key, value in dict.items():
+# #     list.append(dict.items())
+# # print(list)
+# list = sorted(dict.items(), key=lambda item: item[1])
+# # print(list)
+# # print(list[0][1])
+# while len(list) != 0:
+#     if list[0][1] <= k:
+#         k = k - list[0][1]
+#         print(list[0][1])
+#         print(k)
+#         list.pop(0)
+#         print(list)
+#     else:
+#         print(len(list))
+#         print(len(list))
+#         break
+# print(len(list))
+#
+# from collections import Counter
+# class Solution:
+#     def findLeastNumOfUniqueInts(self, arr: List[int], k: int) -> int:
+#         # word = Counter(arr)
+#         res = sorted(Counter(arr).items(),key = lambda item:item[1])
+#         n = len(res)
+#         for i in range(len(res)):
+#             if res[i][1]<=k:
+#                 k-=res[i][1]
+#                 n-=1
+#             else:
+#                 break
+#         return n
+
+nums = [2, 2, 3, 4]
+sum = 0
+list_len = len(nums)
+if list_len < 3:
+    sum = 0
+else:
+    list = sorted(nums)
+    for i, a in enumerate(list[:-2]):
+        for j, b in enumerate(list[i + 1:-1]):
+            for k, c in enumerate(list[i + j + 2:]):
+                cnt = a + b
+                if cnt > c:
+                    sum = sum + 1
+                elif cnt == c:
+                    continue
+print(sum)
+
+# import bisect
+# class Solution:
+#     def triangleNumber(self, nums: List[int]) -> int:
+#         # won't exceed 1000
+#         # integer is [0, 1000]
+#         # Time complexity : O(N**2*logN)
+#         # Space complexity : O(1)
+#         res = 0
+#         nums.sort()
+#         for i in range(len(nums)):
+#             if nums[i] == 0: continue
+#             for j in range(i + 1, len(nums)):
+#                 if nums[j] == 0: continue
+#                 a, b = nums[i], nums[j]
+#                 index = bisect.bisect_right(nums, a + b - 1) - 1
+#                 res += index - j
+#         return res
+
+
+class Solution:
+    def triangleNumber(self, nums: List[int]) -> int:
+        # 2 pointers -- 对撞型 -- 2sum类
+        if not nums or len(nums) < 3:
+            return 0
+
+        _num = 0
+        nums = sorted(nums)
+
+        # i 对应于最大的那条边
+        for i in range(len(nums)):
+            left, right = 0, i - 1
+            while left < right:
+                if nums[left] + nums[right] > nums[i]:
+                    _num += right - left
+                    right -= 1
+                else:
+                    left += 1
+
+        return _num
