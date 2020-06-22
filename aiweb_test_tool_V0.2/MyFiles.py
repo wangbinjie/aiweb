@@ -19,6 +19,10 @@ def node_laoding():
         log_list('节点载入失败')
     shortID_dict = nodelist.get('测试节点')
     shortID_hertBeat = nodelist.get('心跳节点')
+    for i in range(len(shortID_dict)):
+        shortID_dict[i] = shortID_dict[i].upper().zfill(4)
+    for i in range(len(shortID_hertBeat)):
+        shortID_hertBeat[i] = shortID_hertBeat[i].upper().zfill(4)
     G_Para.set_value('shortID', shortID_dict)
     G_Para.set_value('shortID_hertBeat', shortID_hertBeat)
     shortID = G_Para.get_value('shortID')
@@ -37,9 +41,10 @@ def node_laoding():
 
 
 def readme_loading():
-    with open('readme.txt', 'r',encoding='utf-8') as f:
+    with open('readme.txt', 'r', encoding='utf-8') as f:
         readme = f.read()
         log_list(readme)
+
 
 def excel_create():
     global FILE_PATH
